@@ -1,3 +1,8 @@
+/**
+*    2019/08/16 10:35
+*    创建人  meiko
+*/
+
 // 元素出现的距离
 let itemParams = {
     itemTop_e: [],
