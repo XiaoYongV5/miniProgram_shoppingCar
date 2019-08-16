@@ -1,0 +1,340 @@
+.serverContainer{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menuTopClass{
+    width: 100%;
+    height: 1rpx;
+    box-shadow: 0 1rpx 6rpx 0 #E1E1E3;
+}
+
+.menu{
+    width: 100%;
+    height: 100rpx;
+    flex: 0 0 100rpx;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 1rpx 6rpx 0 #E1E1E3;
+    align-items: center;
+    z-index: 1;
+}
+
+.menu .menuItem{
+    width: 160rpx;
+    text-align: center;
+    line-height: 52rpx;
+    height: 52rpx;
+    border-radius: 32rpx;
+    font-size: 24rpx;
+    color: #113B73
+}
+
+.menu .active{
+    color: #fff;
+    background-color: #113B73
+}
+
+.serverContent{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.serverList{
+    flex: 0 0 190rpx;
+    background-color: #f7f8fa;
+    height: 100%;
+}
+
+.serverList .listItem{
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 26rpx;
+    color: #7C8594;
+    position: relative;
+}
+
+.serverList .active{
+    background-color: #fff;
+    color: #333333;
+}
+
+.serverList .active::after{
+    content: '';
+    height: 34rpx;
+    width: 6rpx;
+    background-color: #113B73;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    margin: auto 0px;
+}
+
+.serverItem{
+    flex: 1 0;
+    box-sizing: border-box;
+}
+
+.itemContent{
+    width: 100%;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+}
+
+.itemContent .itemTitle{
+    font-size: 24rpx;
+    color: #333333;
+    padding: 20rpx 0px 30rpx;
+}
+
+.itemContent .itemContentLi{
+    display: flex;
+    margin-bottom: 20rpx;
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 30rpx;
+    border-bottom: 1rpx solid #E5E5E5;
+}
+
+.itemContent .itemContentLi .itemImage{
+    flex: 0 0 140rpx;
+    width: 140rpx;
+    height: 140rpx;
+    margin-right: 30rpx;
+}
+
+.itemContent .itemContentLi .itemInfo{
+    position: relative;
+    flex: 1 1 auto;
+}
+
+.itemContent .itemContentLi .itemInfo .titleInfo{
+    font-size: 28rpx;
+    color: #333333;
+    width: 100%;
+    margin-bottom: 12rpx;
+}
+
+.itemContent .itemContentLi .itemInfo .titleInfo, .itemContent .itemContentLi .itemInfo .typeInfo{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.itemContent .itemContentLi .itemInfo .typeInfo{
+    font-size: 26rpx;
+    color: #7C8594;
+    margin-bottom: 14rpx;
+}
+
+.itemContent .itemContentLi .itemInfo .money{
+    font-size: 32rpx;
+    color: #FA7D1D;
+}
+
+.itemContent .itemContentLi .itemInfo .buyButton{
+    text-align: center;
+    background: #FA9B1D;
+    border-radius: 4rpx;
+    font-size: 24rpx;
+    color: #FFFFFF;
+    width: 140rpx;
+    height: 48rpx;
+    line-height: 48rpx;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+
+swiper{
+    flex: 1 0;
+}
+
+.controlView, .goodsHandle{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.controlView{
+    position: absolute;
+    right: 0px;
+    bottom: -10px;
+}
+
+.goodsHandle{
+    flex: 0 0 300rpx;
+}
+
+.controlView .controlBtn{
+    padding: 5px;
+}
+
+.controlView .controlBtn .btn, .goodsHandle .controlBtn .btn{
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    background-color: #EAEEF3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+.controlView .controlBtn .btn .add, .goodsHandle .controlBtn .btn .add{
+    width: 20px;
+    height: 20px;
+}
+
+.controlView .total, .goodsHandle .total{
+    font-size: 26rpx;
+    color: #333333;
+    flex: 0 0 50rpx;
+    text-align: center;
+}
+
+.controlView .controlBtn .btn .subtract, .goodsHandle .controlBtn .btn .subtract{
+    width: 20px;
+}
+
+.shoppingCar{
+    width: 100%;
+    height: 98rpx;
+    background-color: #fff;
+    display: flex;
+    bottom: -98rpx;
+    align-items: center;
+    position: fixed;
+    z-index: 20;
+    border-top: 1rpx solid #DCDEE0;
+    transition: all 0.3s ease-in-out
+}
+
+.shoppingCarFade{
+    bottom: 0;
+}
+
+.shoppingCar .goodsListInfo{
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    padding-left: 40rpx;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.shoppingCar .goodsListInfo .goodsCarIcon{
+    width: 52rpx;
+    height: 52rpx;
+}
+.shoppingCar .goodsListInfo .goodsTotal{
+    padding: 0rpx 12rpx;
+    height: 20rpx;
+    background: #FA9B1D;
+    border: 1rpx solid #FFFFFF;
+    border-radius: 10rpx;
+    font-size: 20rpx;
+    color: #FFFFFF;
+    text-align: center;
+    position: relative;
+    top: -15rpx;
+    left: -10rpx;
+    line-height: 19rpx;
+}
+
+.shoppingCar .goodsListInfo .money{
+    font-size: 36rpx;
+    color: #FA7D1D;
+    margin-left: 20rpx;
+}
+
+.shoppingCar .sureBuy{
+    flex: 0 0 320rpx;
+    background-color: #FA9B1D;
+    font-size: 30rpx;
+    height: 100%;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 98rpx
+}
+
+.mask{
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    background-color: #000000;
+}
+
+.buyGoodsList{
+    position: absolute;
+    bottom: -100%;
+    width: 100%;
+    background-color: #fff;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    z-index: 9;
+    transition: bottom 0.3s ease-in-out
+}
+
+.buyGoodsFade{
+    bottom: 98rpx;
+}
+
+.buyGoodsList .titleInfo{
+    height: 100rpx;
+    display: flex;
+    font-size: 30rpx;
+    color: #494949;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1rpx solid #E5E5E5;
+}
+
+.buyGoodsList .titleInfo .sure{
+    color: #113B73;
+}
+
+.buyGoodsList .clear{
+    font-size: 24rpx;
+    color: #888888;
+    height: 96rpx;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom: 1rpx solid #E5E5E5;
+}
+
+.buyGoodsList .clear .clearBtn{
+    padding: 25rpx 0rpx 25rpx 30rpx;
+    width: auto;
+}
+
+/* 查看已经购买的商品滚动容器高度 */
+.goodsListContent{
+    max-height: 400rpx;
+}
+
+.goodsListContent .goodsInfo{
+    height: 97rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24rpx;
+    color: #8F8F95;
+}

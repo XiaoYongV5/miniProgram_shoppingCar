@@ -1,0 +1,113 @@
+<view class="serverContainer">
+    <view class="menuTopClass"></view>
+    <view class="menu">
+        <view class="menuItem {{current == 0 ? 'active' : ''}}" data-index="0" bindtap="selectMenuList">企业服务</view>
+        <view class="menuItem {{current == 1 ? 'active' : ''}}" data-index="1" bindtap="selectMenuList">会员服务</view>
+    </view>
+    <swiper bindchange="toggleService" current="{{current}}">
+        <swiper-item>
+            <view class="serverContent">
+                <view class="serverList">
+                    <view class="listItem {{enterpriseItem == 0 ? 'active' : ''}}">秘书服务</view>
+                    <view class="listItem {{enterpriseItem == 1 ? 'active' : ''}}">工商注册</view>
+                    <view class="listItem {{enterpriseItem == 2 ? 'active' : ''}}">财务审计</view>
+                    <view class="listItem {{enterpriseItem == 3 ? 'active' : ''}}">知识产权</view>
+                </view>
+                <scroll-view scroll-y class="serverItem" data-watchItem="enterpriseItem" data-arr="itemTop_e" bindscroll="scrollView">
+                    <!-- 一个区块循环一个东西 -->
+                    <view wx:key="index" class="itemContent" wx:for="{{enterpriseList}}">
+                        <view class="itemTitle enterpriseTitle" wx:if="{{item.data.length != 0}}">{{item.name}}</view>
+                        <view class="itemContentLi" wx:for="{{item.data}}" wx:for-item="itemData" wx:key="itemIndex" wx:for-index="itemIndex">
+                            <image class="itemImage" src="{{itemData.image}}"></image>
+                            <view class="itemInfo">
+                                <view class="titleInfo">{{itemData.name}}</view>
+                                <view class="typeInfo">{{itemData.type}}</view>
+                                <view class="money">¥{{itemData.money}}</view>
+                                <view class="buyButton" data-list="enterpriseList" data-parant="{{index}}" data-index="{{itemIndex}}" data-handle="+" bindtap="handleGoods">购买服务</view>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </swiper-item>
+        <swiper-item>
+            <view class="serverContent">
+                <view class="serverList">
+                    <view class="listItem {{memberItem == 0 ? 'active' : ''}}">美食特惠</view>
+                    <view class="listItem {{memberItem == 1 ? 'active' : ''}}">下午茶</view>
+                    <view class="listItem {{memberItem == 2 ? 'active' : ''}}">手机维修</view>
+                    <view class="listItem {{memberItem == 3 ? 'active' : ''}}">烟酒糖茶</view>
+                    <view class="listItem {{memberItem == 4 ? 'active' : ''}}">行李箱包</view>
+                </view>
+                <scroll-view scroll-y class="serverItem" data-watchItem="memberItem" data-arr="itemTop_m" bindscroll="scrollView">
+                    <view wx:key="index" class="itemContent" wx:for="{{memberServiceList}}">
+                        <view class="itemTitle memberTitle" wx:if="{{item.data.length != 0}}">{{item.name}}</view>
+                        <view class="itemContentLi" wx:for="{{item.data}}" wx:for-item="itemData" wx:key="itemIndex" wx:for-index="itemIndex">
+                            <image class="itemImage" src="{{itemData.image}}"></image>
+                            <view class="itemInfo">
+                                <view class="titleInfo">{{itemData.name}}</view>
+                                <view class="typeInfo">{{itemData.type}}</view>
+                                <view class="money">¥{{itemData.money}}</view>
+                                <view class="controlView">
+                                    <view class="controlBtn" data-index="{{itemIndex}}" wx:if="{{itemData.total != 0}}" data-list="memberServiceList" data-parant="{{index}}" data-index="{{itemIndex}}" bindtap="handleGoods" data-handle="-">
+                                        <view class="btn">
+                                            <image src="../../images/subtract.svg" class="subtract" />
+                                        </view>
+                                    </view>
+                                    <view class="total"  wx:if="{{itemData.total != 0}}">{{itemData.total}}</view>
+                                    <view class="controlBtn" data-list="memberServiceList" data-parant="{{index}}" data-index="{{itemIndex}}" data-handle="+" bindtap="handleGoods">
+                                        <view class="btn">
+                                            <image src="../../images/add.svg"  class="add" />
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>
+<view class="mask" hidden="{{!selectGoods}}"></view>
+<view class="buyGoodsList {{selectGoods ? 'buyGoodsFade' : ''}}">
+    <view class="titleInfo">
+        <view class="cancel" bindtap="selectCar" data-status="0">取消</view>
+        <view class="title">已添加商品</view>
+        <view class="sure">确认</view>
+    </view>
+    <view class="clear">
+        <view class="clearBtn" bindtap="clearBuyList">
+            清空
+        </view>
+    </view>
+    <scroll-view class="goodsListContent" scroll-y>
+        <view class="goodsInfo" wx:for="{{buyGoodsList}}" wx:key="{{index}}">
+            <view class="goodsName">{{item.name}}</view>
+            <view class="goodsHandle">
+                <view class="controlBtn" data-index="{{index}}" data-id="{{item.goodsID}}" bindtap="shoppingCarHandle" data-handle="-">
+                    <view class="btn">
+                        <image src="../../images/subtract.svg" class="subtract" />
+                    </view>
+                </view>
+                <view class="total">{{item.total}}</view>
+                <view class="controlBtn" data-index="{{index}}" data-id="{{item.goodsID}}" data-handle="+" bindtap="shoppingCarHandle">
+                    <view class="btn">
+                        <image src="../../images/add.svg"  class="add" />
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<view class="shoppingCar {{COUNT_TOTAL > 0 ? 'shoppingCarFade' : ''}}" >
+    <view class="goodsListInfo">
+        <image src="../../images/shoppingCar.svg" data-status="1" bindtap="selectCar" class="goodsCarIcon">
+        </image>
+        <view class="goodsTotal">{{COUNT_TOTAL}}</view>
+        <view class="money">¥{{COUNT_MONEY}}</view>
+    </view>
+    <view class="sureBuy" bindtap="sureBuy">
+        确认购买
+    </view>
+</view>
